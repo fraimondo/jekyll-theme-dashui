@@ -1,0 +1,12 @@
+#  The contact options.
+
+-
+  type: github
+  icon: 'github'
+-
+  type: twitter
+  icon: 'twitter'
+-
+  type: email
+  icon: 'mail'
+  noblank: true            # open link in current tab

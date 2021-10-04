@@ -1,0 +1,57 @@
+<!--
+  The Head
+-->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  {% if page.layout == 'home' or page.layout == 'post' %}
+    <meta name="pv-cache-enabled" content="{{ site.google_analytics.pv.enabled }}">
+
+    {% if site.google_analytics.pv.enabled %}
+      {% if site.google_analytics.pv.proxy_endpoint != ''
+        and site.google_analytics.pv.proxy_endpoint %}
+        <meta name="pv-proxy-endpoint" content="{{ site.google_analytics.pv.proxy_endpoint }}">
+      {% endif %}
+
+      {% if site.google_analytics.pv.cache %}
+        <meta name="pv-cache-data" content="{{ '/assets/js/data/pageviews.json' | relative_url }}">
+      {% endif %}
+
+    {% endif %}
+  {% endif %}
+
+  {% seo title=false %}
+
+  <title>
+  {%- unless page.layout == "home" -%}
+    {{ page.title | append: " | "}}
+  {%- endunless -%}
+    {{ site.title }}
+  </title>
+
+
+
+<link rel="stylesheet" href="{{ '/assets/libs/prismjs/themes/prism.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/libs/prismjs/plugins/line-numbers/prism-line-numbers.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/libs/prismjs/plugins/toolbar/prism-toolbar.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/libs/bootstrap-icons/font/bootstrap-icons.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/libs/dropzone/dist/dropzone.css' | relative_url }}">
+<link  rel="stylesheet" href="{{ '/assets/libs/@mdi/font/css/materialdesignicons.min.css' | relative_url }}" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
+
+
+<link rel="stylesheet" href="{{ '/assets/css/theme.min.css' | relative_url }}">
+
+{% if page.custom_css %}
+  {% for t_css in page.custom_css %}
+    {% if t_css contains 'https://' %}
+      <link rel="stylesheet" href="{{ t_css }}"></link>
+    {% else %}
+      <link rel="stylesheet" href="{{ t_css | relative_url }}"></link>
+    {% endif %}
+  {% endfor %}
+{% endif %}
+</head>

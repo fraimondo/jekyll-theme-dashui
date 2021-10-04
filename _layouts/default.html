@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  {% include head.html %}
+
+  <body>
+    <div id="db-wrapper" >
+      {% if site.navbar_vertical %}
+        {% include navbar-vertical.html %}
+      {% endif %}
+      <div id="page-content" {% if site.navbar_vertical == false %}style="margin-left:0;" {%endif %}>
+      {% if site.navbar_top %}
+        {% include navbar-top.html %}
+      {% endif %}
+          {{ content }}
+      </div>
+    </div>
+  {% include scripts.html %}
+  </body>
+</html>
