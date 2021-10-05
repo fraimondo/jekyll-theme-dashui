@@ -1,3 +1,6 @@
+{% assign this_url = page.url | relative_url %}
+{% assign home_url = '/' | relative_url %}
+
 <div class="header">
   <!-- navbar -->
   <nav class="navbar-classic navbar navbar-expand-lg">
@@ -8,14 +11,15 @@
     {% endif %}
      <ul class="navbar-nav navbar-right-wrap d-flex nav-top-wrap">
         <li class="nav-item mx-2">
-          <a href="{{ site.baseurl }}" class="btn btn-outline-primary{% if site.baseurl == page.url %}{{ " active" }}{% endif %}">
+          <a href="{{ '/' | relative_url }}" class="btn btn-outline-primary{% if home_url == this_url %}{{ " active" }}{% endif %}">
               <i class="nav-icon icon-xs" data-feather="home"></i>
               <span>Home</span>
           </a>
         </li> <!-- .nav-item -->
       {% for tab in site.tabs %}
+      {% assign tab_url = tab.url | relative_url %}
         <li class="nav-item mx-2">
-          <a href="{{ tab.url | relative_url }}" class="btn btn-outline-primary{% if tab.url == page.url %}{{ " active" }}{% endif %}">
+          <a href="{{ tab.url | relative_url }}" class="btn btn-outline-primary{% if tab_url == this_url %}{{ " active" }}{% endif %}">
             {% if tab.icon %}
               <i class="nav-icon icon-xs me-2" data-feather="{{ tab.icon }}"></i>
             {% endif %}
